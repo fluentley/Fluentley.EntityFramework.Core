@@ -21,12 +21,11 @@ namespace Fluentley.EntityFramework.Core.Processors
                 result.IsSuccess = true;
                 result.ExecutionDuration = watch.Elapsed;
             }
-
             catch (Exception exception)
             {
                 result.ErrorType = ErrorType.DatabaseException;
                 result.IsSuccess = false;
-                result.ExceptionMessage = exception?.InnerException?.Message ?? exception.Message;
+                result.ExceptionMessage = exception.InnerException?.Message ?? exception.Message;
                 result.Exception = exception;
             }
             finally
@@ -52,12 +51,11 @@ namespace Fluentley.EntityFramework.Core.Processors
                 result.IsSuccess = true;
                 result.ExecutionDuration = watch.Elapsed;
             }
-
             catch (Exception exception)
             {
                 result.ErrorType = ErrorType.DatabaseException;
                 result.IsSuccess = false;
-                result.ExceptionMessage = exception?.InnerException?.Message ?? exception.Message;
+                result.ExceptionMessage = exception.InnerException?.Message ?? exception.Message;
                 result.Exception = exception;
             }
             finally
@@ -85,7 +83,7 @@ namespace Fluentley.EntityFramework.Core.Processors
             {
                 result.IsSuccess = false;
                 result.ErrorType = ErrorType.DatabaseException;
-                result.ExceptionMessage = exception?.InnerException?.Message ?? exception.Message;
+                result.ExceptionMessage = exception.InnerException?.Message ?? exception.Message;
                 result.Exception = exception;
             }
             finally

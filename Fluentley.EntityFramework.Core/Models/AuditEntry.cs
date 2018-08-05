@@ -39,6 +39,9 @@ namespace Fluentley.EntityFramework.Core.Models
                         }
 
                         break;
+
+                    default:
+                       continue;
                 }
             }
         }
