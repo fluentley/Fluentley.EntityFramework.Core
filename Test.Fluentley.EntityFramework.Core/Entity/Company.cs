@@ -12,22 +12,5 @@ namespace Test.Fluentley.EntityFramework.Core.Entity
 
         [DisplayName("Web Site")]
         public string Website { get; set; }
-
-        /*public bool ShouldSerializeWebsite()
-        {
-
-            return typeof(Company).GetProperty(nameof(this.Website)).Attribute<DisplayNameAttribute>() != null;
-        }
-
-        public bool ShouldSerializeName()
-        {
-
-            return typeof(Company).GetProperty(nameof(this.Name)).Attribute<DisplayNameAttribute>() != null;
-        }
-
-        public bool ShouldSerializeCommunities()
-        {
-            return typeof(Company).GetProperty(nameof(this.Communities)).Attribute<DisplayNameAttribute>() != null;
-        }*/
     }
 }
