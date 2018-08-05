@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Fluentley.EntityFramework.Core</PackageId>
-    <Version>1.0.0-Alpha1.0</Version>
+    <Version>1.0.0-Alpha1.1</Version>
     <Authors>Emre@Fluentley</Authors>
     <Company>Fluentley</Company>
     <Description>Focuses on fluently perspective on EFContext, also extends results to solve complex scenarios via abstraction such as auditing paging and more.</Description>
