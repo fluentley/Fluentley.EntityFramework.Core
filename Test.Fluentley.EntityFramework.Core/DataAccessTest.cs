@@ -76,7 +76,6 @@ namespace Test.Fluentley.EntityFramework.Core
         public async Task DeleteViaRepository()
         {
             var result = await _repository.Create(CreateCommand);
-            var result2 = await _repository.Create(CreateCommand);
 
             Assert.AreNotEqual(null, result.Data);
 
