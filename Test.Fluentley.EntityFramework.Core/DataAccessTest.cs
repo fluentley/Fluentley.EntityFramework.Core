@@ -28,7 +28,6 @@ namespace Test.Fluentley.EntityFramework.Core
             Name = "TestCompany1"
         };
 
-
         [TestMethod]
         public async Task RevertViaAudit()
         {
@@ -41,7 +40,6 @@ namespace Test.Fluentley.EntityFramework.Core
             var findResult = await _repository.Find(result.Data.Id);
 
             Assert.AreEqual("UpdatedWebsite", findResult.Data.Website);
-
 
             await _repository.Update(result.Data.Id, updateResult.Audit.OldValues);
             var findResult2 = await _repository.Find(result.Data.Id);
@@ -59,7 +57,6 @@ namespace Test.Fluentley.EntityFramework.Core
             Assert.AreNotEqual(null, result.Data, "Data should not return null");
             Assert.AreNotEqual(default(Guid), result.Data.Id, "Created Id should not return null");
         }
-
 
         [TestMethod]
         public async Task UpdateViaRepository()
@@ -80,7 +77,6 @@ namespace Test.Fluentley.EntityFramework.Core
         {
             var result = await _repository.Create(CreateCommand);
             var result2 = await _repository.Create(CreateCommand);
-
 
             Assert.AreNotEqual(null, result.Data);
 
