@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Fluentley.QueryBuilder;
 using Fluentley.QueryBuilder.Models;
@@ -28,19 +29,79 @@ namespace Fluentley.EntityFramework.Core.Operations
             return Task.FromResult(queryResult);
         }
 
-        public async Task<T> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class
+        public Task<T> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class
         {
             var queryResult = _context.Queryable<T>().QueryOn(options);
 
             foreach (var eagerLoad in queryResult.EagerLoads)
                 queryResult.Data.Include(eagerLoad);
 
-            return await queryResult.Data.FirstOrDefaultAsync();
+            return queryResult.Data.FirstOrDefaultAsync();
         }
 
-        public async Task<T> FindAsync<T, TId>(TId id) where T : class
+        public Task<int> CountAsync<T>(Action<IQueryOption<T>> options = null) where T : class
         {
-            return await _context.Set<T>().FindAsync(id);
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.CountAsync();
+        }
+
+        public Task<decimal> SumAsync<T>(Expression<Func<T, decimal>> sum, Action<IQueryOption<T>> options = null) where T : class
+        {
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.SumAsync(sum);
+        }
+
+        public Task<decimal> AverageAsync<T>(Expression<Func<T, decimal>> average, Action<IQueryOption<T>> options = null) where T : class
+        {
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.AverageAsync(average);
+        }
+
+        public Task<bool> ContainsAsync<T>(T contains, Action<IQueryOption<T>> options = null) where T : class
+        {
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.ContainsAsync(contains);
+        }
+
+        public Task<bool> AnyAsync<T>(Action<IQueryOption<T>> options = null) where T : class
+        {
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.AnyAsync();
+        }
+
+        public Task<bool> AllAsync<T>(Expression<Func<T, bool>> predicate, Action<IQueryOption<T>> options = null) where T : class
+        {
+            var queryResult = _context.Queryable<T>().QueryOn(options);
+
+            foreach (var eagerLoad in queryResult.EagerLoads)
+                queryResult.Data.Include(eagerLoad);
+
+            return queryResult.Data.AllAsync(predicate);
+        }
+
+        public Task<T> FindAsync<T, TId>(TId id) where T : class
+        {
+            return _context.Set<T>().FindAsync(id);
         }
     }
 }

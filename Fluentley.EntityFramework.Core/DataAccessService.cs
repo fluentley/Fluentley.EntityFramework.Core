@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Fluentley.EntityFramework.Core.Operations;
 using Fluentley.EntityFramework.Core.Processors;
@@ -64,6 +65,36 @@ namespace Fluentley.EntityFramework.Core
         public Task<IResult<T>> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class
         {
             return _operationProcessor.Process(() => _readEntitiesImplementation.SingleAsync(options));
+        }
+
+        public Task<IResult<int>> CountAsync<T>(Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.CountAsync(options));
+        }
+
+        public Task<IResult<decimal>> SumAsync<T>(Expression<Func<T, decimal>> sum, Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.SumAsync(sum, options));
+        }
+
+        public Task<IResult<decimal>> AverageAsync<T>(Expression<Func<T, decimal>> average, Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.AverageAsync(average, options));
+        }
+
+        public Task<IResult<bool>> ContainsAsync<T>(T model, Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.ContainsAsync(model, options));
+        }
+
+        public Task<IResult<bool>> AnyAsync<T>(Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.AnyAsync(options));
+        }
+
+        public Task<IResult<bool>> AllAsync<T>(Expression<Func<T, bool>> predicate, Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.Process(() => _readEntitiesImplementation.AllAsync(predicate, options));
         }
 
         #endregion
