@@ -3,4 +3,4 @@
 [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/Fluentley.EntityFramework.Core/)
 
 # Fluentley.EntityFramework.Core
-Focuses on fluently perspective on EFContext, also extends results to solve complex scenarios via abstraction such as auditing paging and more.
+Focuses on fluently perspective on EFContext, also extends results to solve complex scenarios via abstraction such as auditing paging and more!
