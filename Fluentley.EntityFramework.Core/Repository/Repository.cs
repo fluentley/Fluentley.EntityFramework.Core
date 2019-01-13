@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Fluentley.EntityFramework.Core.ResultArguments;
 using Fluentley.QueryBuilder.Options;
@@ -51,6 +52,11 @@ namespace Fluentley.EntityFramework.Core.Repository
         public Task<IResult<IQueryable<T>>> Query(Action<IQueryOption<T>> options = null)
         {
             return _service.QueryAsync(options);
+        }
+
+        public Task<IResult<IQueryable<TSelect>>> Query<TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null)
+        {
+            return _service.QueryAsync(selector,options);
         }
 
         public Task<IResult<T>> Single(Action<IQueryOption<T>> options = null)

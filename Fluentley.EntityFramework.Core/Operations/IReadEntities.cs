@@ -9,6 +9,8 @@ namespace Fluentley.EntityFramework.Core.Operations
     internal interface IReadEntities
     {
         Task<IQueryResult<T>> QueryAsync<T>(Action<IQueryOption<T>> options = null) where T : class;
+       // Task<IQueryResult<TSelect>> QueryAsync<T,TSelect>(Action<IQueryOption<T>> options = null) where T : class;
+
         Task<T> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class;
         Task<int> CountAsync<T>(Action<IQueryOption<T>> options = null) where T : class;
         Task<decimal> SumAsync<T>(Expression<Func<T, decimal>> sum, Action<IQueryOption<T>> options = null) where T : class;

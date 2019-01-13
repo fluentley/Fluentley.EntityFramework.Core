@@ -4,11 +4,11 @@
     <TargetFrameworks>netstandard2.0;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Fluentley.EntityFramework.Core</PackageId>
-    <Version>1.0.0-Alpha1.8</Version>
+    <Version>1.0.0-Alpha1.10</Version>
     <Authors>Emre@Fluentley</Authors>
     <Company>Fluentley</Company>
     <Description>Focuses on fluently perspective on EFContext, also extends results to solve complex scenarios via abstraction such as auditing paging and more.</Description>
-    <Copyright>Copyright © Fluentley 2018</Copyright>
+    <Copyright>Copyright © Fluentley 2019</Copyright>
     <PackageLicenseUrl>https://github.com/fluentley/Fluentley.EntityFramework.Core/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/fluentley/Fluentley.EntityFramework.Core</PackageProjectUrl>
     <PackageIconUrl>https://github.com/fluentley/Fluentley.QueryBuilder/raw/master/FluentleyLogo3.png</PackageIconUrl>
