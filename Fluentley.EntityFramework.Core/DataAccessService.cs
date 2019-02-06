@@ -64,13 +64,17 @@ namespace Fluentley.EntityFramework.Core
 
         public Task<IResult<IQueryable<TSelect>>> QueryAsync<T, TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null) where T : class
         {
-          
-            return _operationProcessor.Process(() => _readEntitiesImplementation.QueryAsync<T>(options), selector);
+            return _operationProcessor.Process(() => _readEntitiesImplementation.QueryAsync(options), selector);
         }
 
         public Task<IResult<T>> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class
         {
             return _operationProcessor.Process(() => _readEntitiesImplementation.SingleAsync(options));
+        }
+
+        public Task<IResult<TSelect>> SingleAsync<T, TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null) where T : class
+        {
+            return _operationProcessor.ProcessSingle(() => _readEntitiesImplementation.QueryAsync(options), selector);
         }
 
         public Task<IResult<int>> CountAsync<T>(Action<IQueryOption<T>> options = null) where T : class

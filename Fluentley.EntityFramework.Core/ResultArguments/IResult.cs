@@ -12,13 +12,11 @@ namespace Fluentley.EntityFramework.Core.ResultArguments
         bool IsSuccess { get; set; }
         ErrorType ErrorType { get; set; }
 
-        [JsonIgnore]
-        Exception Exception { get; set; }
+        [JsonIgnore] Exception Exception { get; set; }
 
         QueryPaging Paging { get; set; }
 
-        [JsonIgnore]
-        AuditEntry Audit { get; set; }
+        [JsonIgnore] AuditEntry Audit { get; set; }
     }
 
     public interface IResult<T> : IResult

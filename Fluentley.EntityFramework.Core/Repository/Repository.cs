@@ -56,12 +56,17 @@ namespace Fluentley.EntityFramework.Core.Repository
 
         public Task<IResult<IQueryable<TSelect>>> Query<TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null)
         {
-            return _service.QueryAsync(selector,options);
+            return _service.QueryAsync(selector, options);
         }
 
         public Task<IResult<T>> Single(Action<IQueryOption<T>> options = null)
         {
             return _service.SingleAsync(options);
+        }
+
+        public Task<IResult<TSelect>> Single<TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null)
+        {
+            return _service.SingleAsync(selector, options);
         }
 
         #endregion

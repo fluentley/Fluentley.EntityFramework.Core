@@ -7,8 +7,7 @@ namespace Fluentley.EntityFramework.Core.ResultArguments
 {
     public class Result<T> : IResult<T>
     {
-        [JsonIgnore]
-        public AuditEntry Audit { get; set; }
+        [JsonIgnore] public AuditEntry Audit { get; set; }
 
         public bool IsSuccess { get; set; }
         public TimeSpan ExecutionDuration { get; set; }

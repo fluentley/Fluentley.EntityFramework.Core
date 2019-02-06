@@ -18,5 +18,6 @@ namespace Fluentley.EntityFramework.Core.Repository
         Task<IResult<T>> Single(Action<IQueryOption<T>> options = null);
         Task<IResult<T>> Update(TId id, Dictionary<string, object> propertyValues);
         Task<IResult<IQueryable<TSelect>>> Query<TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null);
+        Task<IResult<TSelect>> Single<TSelect>(Expression<Func<T, TSelect>> selector, Action<IQueryOption<T>> options = null);
     }
 }

@@ -7,10 +7,8 @@ namespace Test.Fluentley.EntityFramework.Core.Entity
     {
         public Guid Id { get; set; }
 
-        [DisplayName("Name")]
-        public string Name { get; set; }
+        [DisplayName("Name")] public string Name { get; set; }
 
-        [DisplayName("Web Site")]
-        public string Website { get; set; }
+        [DisplayName("Web Site")] public string Website { get; set; }
     }
 }

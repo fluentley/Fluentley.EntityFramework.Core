@@ -98,6 +98,36 @@ namespace Fluentley.EntityFramework.Core.Processors
             return result;
         }
 
+        public async Task<IResult<TSelect>> ProcessSingle<T, TSelect>(Func<Task<IQueryResult<T>>> operation, Expression<Func<T, TSelect>> selector)
+        {
+            var result = new Result<TSelect>();
+            var watch = new Stopwatch();
+            watch.Start();
+            try
+            {
+                var queryResult = await operation();
+
+                result.Data = queryResult.Data.Select(selector).FirstOrDefault();
+                result.Paging = queryResult.Paging;
+                result.IsSuccess = true;
+                result.ExecutionDuration = watch.Elapsed;
+            }
+            catch (Exception exception)
+            {
+                result.ErrorType = ErrorType.DatabaseException;
+                result.IsSuccess = false;
+                result.ExceptionMessage = exception.InnerException?.Message ?? exception.Message;
+                result.Exception = exception;
+            }
+            finally
+            {
+                watch.Stop();
+                result.ExecutionDuration = watch.Elapsed;
+            }
+
+            return result;
+        }
+
         public async Task<IResult<T>> Process<T>(Func<Task<IAudited<T>>> operation)
         {
             var result = new Result<T>();

@@ -29,8 +29,6 @@ namespace Fluentley.EntityFramework.Core.Operations
             return Task.FromResult(queryResult);
         }
 
-       
-
         public Task<T> SingleAsync<T>(Action<IQueryOption<T>> options = null) where T : class
         {
             var queryResult = _context.Queryable<T>().QueryOn(options);
