@@ -11,11 +11,8 @@ namespace Fluentley.EntityFramework.Core.ResultArguments
         TimeSpan ExecutionDuration { get; set; }
         bool IsSuccess { get; set; }
         ErrorType ErrorType { get; set; }
-
         [JsonIgnore] Exception Exception { get; set; }
-
         QueryPaging Paging { get; set; }
-
         [JsonIgnore] AuditEntry Audit { get; set; }
     }
 

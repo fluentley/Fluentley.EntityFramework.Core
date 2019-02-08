@@ -15,7 +15,6 @@ namespace Fluentley.EntityFramework.Core.Operations
         Task<int> CountAsync<T>(Action<IQueryOption<T>> options = null) where T : class;
         Task<decimal> SumAsync<T>(Expression<Func<T, decimal>> sum, Action<IQueryOption<T>> options = null) where T : class;
         Task<decimal> AverageAsync<T>(Expression<Func<T, decimal>> average, Action<IQueryOption<T>> options = null) where T : class;
-
         Task<bool> AnyAsync<T>(Action<IQueryOption<T>> options = null) where T : class;
         Task<bool> AllAsync<T>(Expression<Func<T, bool>> predicate, Action<IQueryOption<T>> options = null) where T : class;
         Task<T> FindAsync<T, TId>(TId id) where T : class;
