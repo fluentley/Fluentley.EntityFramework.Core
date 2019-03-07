@@ -53,7 +53,8 @@ namespace Fluentley.EntityFramework.Core.Operations
 
             var auditedResult = new Audited<T>(model, entry);
 
-            if (entry.Properties.Any(x => x.IsModified)) await _context.SaveChangesAsync();
+            if (entry.Properties.Any(x => x.IsModified))
+                await _context.SaveChangesAsync();
 
             entry.State = EntityState.Detached;
 

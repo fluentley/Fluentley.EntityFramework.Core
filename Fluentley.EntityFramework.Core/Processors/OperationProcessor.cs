@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Fluentley.EntityFramework.Core.Models;
 using Fluentley.EntityFramework.Core.ResultArguments;
 using Fluentley.QueryBuilder.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fluentley.EntityFramework.Core.Processors
 {
@@ -139,6 +140,13 @@ namespace Fluentley.EntityFramework.Core.Processors
                 result.Audit = operationResult.Audit;
                 result.Data = operationResult.Data;
                 result.IsSuccess = true;
+            }
+            catch (DbUpdateException exception)
+            {
+                result.IsSuccess = false;
+                result.ErrorType = ErrorType.DatabaseException;
+                result.ExceptionMessage = exception.InnerException?.Message ?? exception.Message;
+                result.Exception = exception;
             }
             catch (Exception exception)
             {
