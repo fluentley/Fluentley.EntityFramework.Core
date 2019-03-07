@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Fluentley.EntityFramework.Core</PackageId>
-    <Version>1.0.0-Alpha1.12</Version>
+    <Version>1.0.0-Alpha1.13</Version>
     <Authors>Emre@Fluentley</Authors>
     <Company>Fluentley</Company>
     <Description>Focuses on fluently perspective on EFContext, also extends results to solve complex scenarios via abstraction such as auditing paging and more.</Description>

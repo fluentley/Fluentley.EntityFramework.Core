@@ -48,7 +48,7 @@ namespace Fluentley.EntityFramework.Core.Operations
             entry.State = EntityState.Modified;
 
             foreach (var entryCurrentValue in entry.Properties)
-                if (entryCurrentValue.OriginalValue.Equals(entryCurrentValue.CurrentValue))
+                if (entryCurrentValue.OriginalValue.Equals(entryCurrentValue?.CurrentValue))
                     entryCurrentValue.IsModified = false;
 
             var auditedResult = new Audited<T>(model, entry);
